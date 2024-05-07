@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './authPages/loginPage/LoginPage';
+import RegisterPage from './authPages/RegisterPage/RegisterPage';
+import AboutUser from './authPages/RegisterPage/aboutTheUserRegistration/AboutUser';
 
 /**
  * Main application component that sets up routing and global providers.
@@ -13,6 +15,8 @@ const App = () => {
         <Routes>
           <Route index element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/userInfo/:userId" element={<AboutUser />} />
         </Routes>
       </BrowserRouter>
     </div>
