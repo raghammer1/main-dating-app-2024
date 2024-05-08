@@ -8,6 +8,12 @@ const registerSchema = joi.object({
   username: joi.string().min(3).max(12).required(),
   password: joi.string().min(6).max(12).required(),
   mail: joi.string().email().required(),
+  dob: joi.date().iso().required(),
+  gender: joi.string().required(),
+  genderInterest: joi.string().required(),
+  relationIntent: joi.string().required(),
+  sexOrientation: joi.string().required(),
+  images: joi.array().items(joi.string()).required(),
 });
 
 const loginSchema = joi.object({
