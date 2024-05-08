@@ -1,3 +1,7 @@
+### PLEASE KEEP THIS FILE UP TO DATE WITH YOUR PROGRESS AND UPDATES ON CODE FUNCTIONALITY.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 # Frontend Progress Check:
 
 1. Created the basic pages for login and register. Not yet setup yet with backend
