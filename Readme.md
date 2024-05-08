@@ -1,5 +1,7 @@
 ### PLEASE KEEP THIS FILE UP TO DATE WITH YOUR PROGRESS AND UPDATES ON CODE FUNCTIONALITY.
 
+NOTE: REMEMBER TO KEEP ALL 'CODE IN BRANCHES' AND 'NOT' TO APPROVE YOUR OWN MERGE REQUESTS...
+
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 ## Frontend Progress Check:
