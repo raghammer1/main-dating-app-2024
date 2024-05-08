@@ -15,6 +15,7 @@ const postRegister = async (req, res) => {
       relationIntent,
       sexOrientation,
       images,
+      phoneNumber,
     } = req.body;
 
     // check if user exists
@@ -38,6 +39,7 @@ const postRegister = async (req, res) => {
       relationIntent,
       sexOrientation,
       images,
+      phoneNumber,
     });
 
     //! create the jwt token so that user can be logged in and when token expires user is logged out
@@ -61,6 +63,7 @@ const postRegister = async (req, res) => {
       relationIntent: user.relationIntent,
       sexOrientation: user.sexOrientation,
       images: user.images,
+      phoneNumber: user.phoneNumber,
     });
   } catch (err) {
     return res.status(500).send('error occurred please try again');

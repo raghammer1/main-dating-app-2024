@@ -32,6 +32,7 @@ const postLogin = async (req, res) => {
         relationIntent: user.relationIntent,
         sexOrientation: user.sexOrientation,
         images: user.images,
+        phoneNumber: user.phoneNumber,
       });
     }
     res.status(400).send('Invalid Credential');

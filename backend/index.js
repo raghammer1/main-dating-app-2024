@@ -10,6 +10,7 @@ const PORT = process.env.PORT || process.env.API_PORT;
 const app = express();
 
 const authRoutes = require('./routes/authRoutes');
+const authSendOTP = require('./routes/authSendOTP');
 
 app.use(express.json());
 app.use(cors());
@@ -19,6 +20,7 @@ app.route('/').get((req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/otp', authSendOTP);
 
 const server = http.createServer(app);
 

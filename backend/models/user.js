@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   relationIntent: { type: String },
   sexOrientation: { type: String },
   images: [String],
-  // basically saying that friends will be a array of type User which is also a schema
+  phoneNumber: { type: String },
+  // friends will be a array of type User which is also a schema
   friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
