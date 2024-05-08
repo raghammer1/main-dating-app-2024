@@ -5,7 +5,17 @@ const jwt = require('jsonwebtoken');
 const postRegister = async (req, res) => {
   // res.send('register route');
   try {
-    const { username, password, mail } = req.body;
+    const {
+      username,
+      password,
+      mail,
+      dob,
+      gender,
+      genderInterest,
+      relationIntent,
+      sexOrientation,
+      images,
+    } = req.body;
 
     // check if user exists
     const userExists = await User.exists({ mail: mail.toLowerCase() });
@@ -22,6 +32,12 @@ const postRegister = async (req, res) => {
       username,
       mail: mail.toLowerCase(),
       password: encryptedPassword,
+      dob: new Date(dob),
+      gender,
+      genderInterest,
+      relationIntent,
+      sexOrientation,
+      images,
     });
 
     //! create the jwt token so that user can be logged in and when token expires user is logged out
@@ -39,6 +55,12 @@ const postRegister = async (req, res) => {
       token,
       mail: user.mail,
       _id: user._id,
+      dob: user.dob,
+      gender: user.gender,
+      genderInterest: user.genderInterest,
+      relationIntent: user.relationIntent,
+      sexOrientation: user.sexOrientation,
+      images: user.images,
     });
   } catch (err) {
     return res.status(500).send('error occurred please try again');

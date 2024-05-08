@@ -26,6 +26,12 @@ const postLogin = async (req, res) => {
         token,
         mail: user.mail,
         _id: user._id,
+        dob: user.dob,
+        gender: user.gender,
+        genderInterest: user.genderInterest,
+        relationIntent: user.relationIntent,
+        sexOrientation: user.sexOrientation,
+        images: user.images,
       });
     }
     res.status(400).send('Invalid Credential');

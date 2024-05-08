@@ -4,6 +4,12 @@ const userSchema = new mongoose.Schema({
   mail: { type: String, unique: true },
   username: { type: String },
   password: { type: String },
+  dob: { type: Date },
+  gender: { type: String },
+  genderInterest: { type: String },
+  relationIntent: { type: String },
+  sexOrientation: { type: String },
+  images: [String],
   // basically saying that friends will be a array of type User which is also a schema
   friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
