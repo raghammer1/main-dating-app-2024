@@ -74,11 +74,14 @@ const postTwilio = async (req, res) => {
     },
   });
 
+  const otp = generateOTP();
+
   const mailOptions = {
     from: process.env.MY_EMAIL,
     to: toEmail,
     subject: 'Your OTP',
-    text: `Your OTP is: ${generateOTP()}`,
+    text: `Your OTP is: ${otp}`,
+    html: `<h1>Your OTP</h1><p>Your one-time password (OTP) is: <strong>${otp}</strong></p>`,
   };
 
   try {
@@ -90,4 +93,5 @@ const postTwilio = async (req, res) => {
     res.status(403).send('Unable to send email error: ' + error);
   }
 };
+
 module.exports = postTwilio;
