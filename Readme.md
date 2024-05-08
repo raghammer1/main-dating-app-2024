@@ -30,3 +30,7 @@ NOTE: REMEMBER TO KEEP ALL 'CODE IN BRANCHES' AND 'NOT' TO APPROVE YOUR OWN MERG
 1. Auth token will be returned
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+## Discussion TOPICS
+
+1. What will a USER Schema look like
