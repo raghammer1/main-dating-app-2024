@@ -19,10 +19,17 @@ const postRegister = async (req, res) => {
     } = req.body;
 
     // check if user exists
-    const userExists = await User.exists({ mail: mail.toLowerCase() });
+    let userExists = await User.exists({ mail: mail.toLowerCase() });
 
     if (userExists) {
       return res.status(409).send('Email already in use');
+    }
+
+    // check if phone number already exists
+    userExists = await User.exists({ phoneNumber: phoneNumber.toLowerCase() });
+
+    if (userExists) {
+      return res.status(409).send('Phone Number already in use already in use');
     }
 
     // encrypt password

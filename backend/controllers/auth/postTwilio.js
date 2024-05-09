@@ -81,7 +81,7 @@ const postTwilio = async (req, res) => {
     to: toEmail,
     subject: 'Your OTP',
     text: `Your OTP is: ${otp}`,
-    html: `<h1>Your OTP</h1><p>Your one-time password (OTP) is: <strong>${otp}</strong></p>`,
+    html: `<div><img src="https://images.pexels.com/photos/15107263/pexels-photo-15107263/free-photo-of-night-sky-above-the-trees.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"/><h1>Your OTP</h1><p>Your one-time password (OTP) is: <strong>${otp}</strong></p></div>`,
   };
 
   try {
