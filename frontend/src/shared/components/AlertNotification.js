@@ -76,8 +76,3 @@ export const AlertProvider = ({ children }) => {
     </AlertContext.Provider>
   );
 };
-
-// USABILITY:
-// import { useAlert } from '../../components/Alert';
-// const { showAlert } = useAlert();
-// showAlert('Welcome back', 'green');
