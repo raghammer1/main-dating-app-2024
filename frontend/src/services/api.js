@@ -5,6 +5,11 @@ export const login = async (data) => {
   return await apiClient.post('/auth/login', data);
 };
 
+// Performs login operation using the provided credentials.
+export const sendOtp = async (data) => {
+  return await apiClient.post('/otp/send-otp', data);
+};
+
 // Registers a new user with the given data.
 export const register = async (data) => {
   try {

@@ -11,12 +11,24 @@ const phoneSchema = joi.object({
     //   new RegExp('^\\+?1?[-\\s.]?\\(?\\d{3}\\)?[-\\s.]?\\d{3}[-\\s.]?\\d{4}$')
     // )
     .required(),
+  // email: joi.string().required(),
+});
+
+const verifyEmailOtpSchema = joi.object({
+  toEmail: joi.string().required(),
+  otp: joi.string().required(),
 });
 
 router.post(
   '/send-otp',
   validator.body(phoneSchema),
   authController.controllers.postTwilio
+);
+
+router.post(
+  '/verify-otp',
+  validator.body(verifyEmailOtpSchema),
+  authController.controllers.verifyOtp
 );
 
 // TEST ROUTE to test our middlewares

@@ -6,11 +6,14 @@ import RegisterPageFooter from './RegisterPageFooter';
 import { validateRegisterForm } from '../../shared/utils/validators';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import userStore from '../../zustand/userStore';
+import { sendOtp } from '../../services/api';
 
 const RegisterPage = ({ register }) => {
   const [mail, setMail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { setCurrentUser } = userStore();
 
   const [isFormValid, setIsFormValid] = useState(true);
 
@@ -21,9 +24,9 @@ const RegisterPage = ({ register }) => {
   }, [mail, password, username, setIsFormValid]);
 
   const handleRegister = () => {
-    const idElements = uuidv4();
-    nav(`/userInfo/${idElements}`);
+    // sendOtp({ toEmail: mail, key: uuidv4() });
     console.log(mail, password);
+
     console.log('lo');
   };
 
