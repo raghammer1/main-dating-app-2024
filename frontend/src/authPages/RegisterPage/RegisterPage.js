@@ -24,7 +24,7 @@ const RegisterPage = ({ register }) => {
   }, [mail, password, username, setIsFormValid]);
 
   const handleRegister = () => {
-    // sendOtp({ toEmail: mail, key: uuidv4() });
+    sendOtp({ toEmail: mail });
     console.log(mail, password);
 
     console.log('lo');
