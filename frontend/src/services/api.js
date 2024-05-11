@@ -10,6 +10,10 @@ export const sendOtp = async (data) => {
   return await apiClient.post('/otp/send-otp', data);
 };
 
+export const verifyOtp = async (data) => {
+  return await apiClient.post('/otp/verify-otp', data);
+};
+
 // Registers a new user with the given data.
 export const register = async (data) => {
   try {

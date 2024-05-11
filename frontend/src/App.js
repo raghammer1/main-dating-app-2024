@@ -18,7 +18,7 @@ const App = () => {
             <Route index element={<LoginPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/userInfo/:userId" element={<AboutUser />} />
+            <Route path="/userInfo/:username" element={<AboutUser />} />
           </Routes>
         </BrowserRouter>
       </AlertProvider>
