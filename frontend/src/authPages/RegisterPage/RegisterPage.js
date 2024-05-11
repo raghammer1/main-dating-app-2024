@@ -14,6 +14,7 @@ import { useAlert } from '../../shared/components/AlertNotification';
 import CustomModal from '../../shared/components/CustomModal';
 import InputWithLabels from '../../shared/components/InputWithLabels';
 import CustomPrimaryButton from '../../shared/components/CustomPrimaryButton';
+import { useLoading } from '../../shared/components/useLoading';
 
 const style = {
   position: 'absolute',
@@ -42,6 +43,8 @@ const RegisterPage = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const { show, hide } = useLoading();
+
   const nav = useNavigate();
 
   useEffect(() => {
@@ -53,7 +56,11 @@ const RegisterPage = () => {
   }, [otp]);
 
   const handleRegister = async () => {
+    show();
     const response = await sendOtp({ toEmail: mail });
+
+    hide();
+
     showAlert(response.data, 'green');
 
     handleOpen();
