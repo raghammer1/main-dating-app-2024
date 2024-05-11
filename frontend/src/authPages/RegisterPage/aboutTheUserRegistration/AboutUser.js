@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputWithLabels from '../../../shared/components/InputWithLabels';
 import DatePickerComponent from '../../../shared/components/DatePickerComponent';
 import DotSelector from '../../../shared/components/DotSelector';
+import ImageUploader from '../../../shared/components/ImageUploader';
 
 const AboutUser = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -16,8 +17,10 @@ const AboutUser = () => {
     relationshipTypes[0]
   );
 
+  const [images, setImages] = useState(Array(6).fill(null));
+
   return (
-    <div style={{ height: '100vh', width: '100vw', backgroundColor: '#222' }}>
+    <div style={{ height: '100%', width: '100vw', backgroundColor: '#222' }}>
       <div style={{ width: '40%', marginLeft: '30px', paddingTop: '20px' }}>
         <DatePickerComponent
           startDate={startDate}
@@ -50,6 +53,10 @@ const AboutUser = () => {
             selectedValue={relationshipIntent}
             setSelectedValue={setRelationshipIntent}
           />
+        </div>
+        <div>
+          <h1 style={{ color: 'white' }}>Images</h1>
+          <ImageUploader images={images} setImages={setImages} />
         </div>
       </div>
     </div>
