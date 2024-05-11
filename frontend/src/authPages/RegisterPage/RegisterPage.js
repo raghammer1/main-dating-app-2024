@@ -110,15 +110,15 @@ const RegisterPage = () => {
         style={style}
       >
         <Typography style={{ fontSize: '24px', color: '#fff' }}>
-          Create Presentation
+          Verification
         </Typography>
         <InputWithLabels
           value={otp}
           setValue={setOtp}
-          type="Presentation Name"
-          placeholder="Enter Presentation Name"
+          type="text"
+          placeholder="Enter OTP"
           dataTestId={'create-presentation-name-test'}
-          label="Presentation Name"
+          label="OTP"
         />
         <>
           <Tooltip title={!isOtpValid ? getFormValid() : getNotFormValid()}>
