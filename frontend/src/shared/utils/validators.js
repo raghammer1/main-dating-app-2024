@@ -25,3 +25,7 @@ export const validateMail = (mail) => {
   const emailPatter = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return emailPatter.test(mail);
 };
+
+export const validateOtp = ({ otp }) => {
+  return otp.length !== 6;
+};

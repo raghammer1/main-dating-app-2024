@@ -3,7 +3,10 @@ import AuthBox from '../../shared/components/AuthBox';
 import { Tooltip, Typography } from '@mui/material';
 import RegisterPageInputs from './RegisterPageInputs';
 import RegisterPageFooter from './RegisterPageFooter';
-import { validateRegisterForm } from '../../shared/utils/validators';
+import {
+  validateOtp,
+  validateRegisterForm,
+} from '../../shared/utils/validators';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import userStore from '../../zustand/userStore';
@@ -33,6 +36,7 @@ const RegisterPage = () => {
   const { showAlert } = useAlert();
 
   const [isFormValid, setIsFormValid] = useState(true);
+  const [isOtpValid, setIsOtpValid] = useState(true);
 
   const [otp, setOtp] = useState('');
   const [open, setOpen] = useState(false);
@@ -44,6 +48,10 @@ const RegisterPage = () => {
   useEffect(() => {
     setIsFormValid(validateRegisterForm({ mail, username, password }));
   }, [mail, password, username, setIsFormValid]);
+
+  useEffect(() => {
+    setIsOtpValid(validateOtp({ otp }));
+  }, [otp]);
 
   const handleRegister = async () => {
     const response = await sendOtp({ toEmail: mail });
@@ -107,12 +115,12 @@ const RegisterPage = () => {
           label="Presentation Name"
         />
         <>
-          <Tooltip title={!isFormValid ? getNotFormValid() : getFormValid()}>
+          <Tooltip title={!isOtpValid ? getFormValid() : getNotFormValid()}>
             <div style={{ display: 'flex', gap: '20px' }}>
               <CustomPrimaryButton
                 label="Create"
                 additionalStyle={{ marginTop: '20px' }}
-                disabled={false}
+                disabled={isOtpValid}
                 onClick={handleVerifyOtp}
                 dataTestid={'create-presentation-name-test-button'}
               />
