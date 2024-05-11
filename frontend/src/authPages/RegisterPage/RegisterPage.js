@@ -8,7 +8,6 @@ import {
   validateRegisterForm,
 } from '../../shared/utils/validators';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import userStore from '../../zustand/userStore';
 import { sendOtp, verifyOtp } from '../../services/api';
 import { useAlert } from '../../shared/components/AlertNotification';
