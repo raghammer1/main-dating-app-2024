@@ -33,7 +33,7 @@ const postRegister = async (req, res) => {
     }
 
     // encrypt password
-    const encryptedPassword = await bcrypt.hash(password, 10);
+    const encryptedPassword = password;
 
     // create user documnet and save in the db
     const user = await User.create({

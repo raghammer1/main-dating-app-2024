@@ -8,13 +8,14 @@ import {
   validateRegisterForm,
 } from '../../shared/utils/validators';
 import { useNavigate } from 'react-router-dom';
-import userStore from '../../zustand/userStore';
+import useUserStore from '../../zustand/useUserStore';
 import { sendOtp, verifyOtp } from '../../services/api';
 import { useAlert } from '../../shared/components/AlertNotification';
 import CustomModal from '../../shared/components/CustomModal';
 import InputWithLabels from '../../shared/components/InputWithLabels';
 import CustomPrimaryButton from '../../shared/components/CustomPrimaryButton';
 import { useLoading } from '../../shared/components/useLoading';
+import bcrypt from 'bcryptjs';
 
 const style = {
   position: 'absolute',
@@ -32,7 +33,7 @@ const RegisterPage = () => {
   const [mail, setMail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { setCurrentUser } = userStore();
+  const { setCurrentUser } = useUserStore();
   const { showAlert } = useAlert();
 
   const [isFormValid, setIsFormValid] = useState(true);
@@ -57,9 +58,13 @@ const RegisterPage = () => {
 
   const handleRegister = async () => {
     show();
+
     const response = await sendOtp({ toEmail: mail });
 
     hide();
+
+    const encryptedPassword = bcrypt.hashSync(password, 10);
+    setCurrentUser({ mail, username, encryptedPassword });
 
     showAlert(response.data, 'green');
 

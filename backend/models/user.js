@@ -11,8 +11,8 @@ const userSchema = new mongoose.Schema({
   sexOrientation: { type: String },
   images: [String],
   phoneNumber: { type: String },
-  // friends will be a array of type User which is also a schema
-  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  // friends will be a array of user _id's
+  friends: [String],
 });
 
 module.exports = mongoose.model('User', userSchema);

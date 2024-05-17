@@ -3,6 +3,7 @@ const http = require('http');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const bodyParser = require('body-parser');
 
 // PORT is for when app is hosted then API_PORT is for local environment
 const PORT = process.env.PORT || process.env.API_PORT;
@@ -11,6 +12,8 @@ const app = express();
 
 const authRoutes = require('./routes/authRoutes');
 const authSendOTP = require('./routes/authSendOTP');
+
+app.use(bodyParser.json({ limit: '500mb' }));
 
 app.use(express.json());
 app.use(cors());

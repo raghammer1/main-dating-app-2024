@@ -7,13 +7,13 @@ import { validateLoginForm } from '../../shared/utils/validators';
 import { useAlert } from '../../shared/components/AlertNotification';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../services/api';
-import userStore from '../../zustand/userStore';
+import useUserStore from '../../zustand/useUserStore';
 
 const LoginPage = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
-  const { setCurrentUser } = userStore();
+  const { setCurrentUser } = useUserStore();
 
   useEffect(() => {
     setIsFormValid(validateLoginForm({ mail, password }));

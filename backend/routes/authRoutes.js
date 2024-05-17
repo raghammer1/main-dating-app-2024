@@ -5,8 +5,8 @@ const joi = require('joi');
 const validator = require('express-joi-validation').createValidator({});
 
 const registerSchema = joi.object({
-  username: joi.string().min(3).max(12).required(),
-  password: joi.string().min(6).max(12).required(),
+  username: joi.string().required(),
+  password: joi.string().required(),
   mail: joi.string().email().required(),
   dob: joi.date().iso().required(),
   gender: joi.string().required(),
@@ -14,6 +14,7 @@ const registerSchema = joi.object({
   relationIntent: joi.string().required(),
   sexOrientation: joi.string().required(),
   images: joi.array().items(joi.string()).required(),
+  phoneNumber: joi.string().required(),
 });
 
 const loginSchema = joi.object({
