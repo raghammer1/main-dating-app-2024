@@ -35,3 +35,4 @@ NOTE: REMEMBER TO KEEP ALL 'CODE IN BRANCHES' AND 'NOT' TO APPROVE YOUR OWN MERG
 ## Discussion TOPICS
 
 1. What will a USER Schema look like
+   Answer: 3 images per user, name, email, phone, gender, genderInterest, relationIntent, sexOrientation, friends, likedByUsers, hobbies

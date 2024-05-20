@@ -11,8 +11,10 @@ const userSchema = new mongoose.Schema({
   sexOrientation: { type: String },
   images: [String],
   phoneNumber: { type: String },
+  hobbies: [String],
   // friends will be a array of user _id's
   friends: [String],
+  likedByUsers: [String],
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -73,7 +73,7 @@ const postRegister = async (req, res) => {
       phoneNumber: user.phoneNumber,
     });
   } catch (err) {
-    return res.status(500).send('error occurred please try again');
+    return res.status(500).send('unknown error occurred please try again');
   }
 };
 
