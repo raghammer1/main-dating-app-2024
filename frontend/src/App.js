@@ -8,7 +8,7 @@ import { LoadingProvider } from './shared/components/useLoading';
 
 /**
  * Main application component that sets up routing and global providers.
- * Handles the routing for login, registration, dashboard, and presentation management.
+ * Hdgfngdfhjtandles the routing for login, registration, dashboard, and presentation management.
  */
 const App = () => {
   return (
