@@ -8,6 +8,7 @@ import CustomPrimaryButton from '../../../shared/components/CustomPrimaryButton'
 import { useLoading } from '../../../shared/components/useLoading';
 import { register } from '../../../services/api';
 import useUserStore from '../../../zustand/useUserStore';
+import { useNavigate } from 'react-router-dom';
 
 const AboutUser = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -20,13 +21,25 @@ const AboutUser = () => {
   const relationshipTypes = ['Long Term', 'Short Term', 'lol'];
   const [relationshipIntent, setRelationshipIntent] = useState('');
 
-  const [images, setImages] = useState(Array(6).fill(null));
+  const [images, setImages] = useState(Array(3).fill(null));
 
   const [isUserValid, setIsUserValid] = useState(false);
 
   const { show, hide } = useLoading();
 
-  const { getCurrentUser } = useUserStore();
+  const nav = useNavigate();
+
+  const { getCurrentUser, setCurrentUser } = useUserStore();
+
+  const handleUserCreation = (res) => {
+    setCurrentUser(res.data);
+
+    console.log('THIS IS RES', res);
+
+    localStorage.setItem('token', res.data.token);
+
+    nav('/dashboard');
+  };
 
   const handleRegisterUser = async () => {
     show();
@@ -44,13 +57,15 @@ const AboutUser = () => {
       genderInterest: userInterestGender,
       relationIntent: relationshipIntent,
       images,
-      phoneNumber: '0400000000',
+      phoneNumber: '0400900001',
       sexOrientation: 'Straight',
     };
 
     console.log(data);
 
     const response = await register(data);
+
+    handleUserCreation(response);
 
     console.log(response);
 
