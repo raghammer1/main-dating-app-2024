@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
   // friends will be a array of user _id's
   friends: [String],
   likedByUsers: [String],
+  location: {
+    type: { type: String, enum: ['Point'], required: true },
+    coordinates: { type: [Number], required: true },
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);

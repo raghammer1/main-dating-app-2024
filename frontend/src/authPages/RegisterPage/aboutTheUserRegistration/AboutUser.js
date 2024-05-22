@@ -9,6 +9,7 @@ import { useLoading } from '../../../shared/components/useLoading';
 import { register } from '../../../services/api';
 import useUserStore from '../../../zustand/useUserStore';
 import { useNavigate } from 'react-router-dom';
+import LocationCatcher from './LocationCatcher';
 
 const AboutUser = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -149,7 +150,11 @@ const AboutUser = () => {
           <ImageUploader images={images} setImages={setImages} />
         </div>
       </div>
-
+      <div className="App">
+        <header className="App-header">
+          <LocationCatcher />
+        </header>
+      </div>
       <>
         <Tooltip title={isUserValid ? getFormValid() : getNotFormValid()}>
           <div style={{ display: 'flex', gap: '20px' }}>
