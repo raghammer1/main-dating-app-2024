@@ -29,6 +29,7 @@ NOTE: REMEMBER TO KEEP ALL 'CODE IN BRANCHES' AND 'NOT' TO APPROVE YOUR OWN MERG
 ## Notes for Backend progress
 
 1. Auth token will be returned
+2. Remember that if you delete the users db from the mongodb then there is a possibility that it wont be able to find users by location you will need to go the new collection of users, go to index's option in the mongoDB then add the : `"<location>:<2dsphere>"`
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
