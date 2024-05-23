@@ -1,12 +1,31 @@
 import axios from 'axios';
 import { useState } from 'react';
-// import './LocationCatcher.css';
+import {
+  Box,
+  TextField,
+  Typography,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Paper,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const LocationCatcher = () => {
+const SuggestionsList = styled(List)(({ theme }) => ({
+  position: 'absolute',
+  width: '100%',
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: theme.shadows[3],
+  zIndex: 1,
+  maxHeight: 200,
+  overflowY: 'auto',
+}));
+
+const LocationCatcher = ({ coordinates, setCoordinates }) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [coordinates, setCoordinates] = useState(null);
 
   const fetchSuggestions = async (query) => {
     if (query.length < 3) {
@@ -30,40 +49,48 @@ const LocationCatcher = () => {
   };
 
   return (
-    <div className="LocationCatcher">
-      <h1>Address Suggester</h1>
-      <input
-        type="text"
+    <Box sx={{ p: 2, position: 'relative', color: 'white' }}>
+      <Typography variant="h4" gutterBottom>
+        Address Suggester
+      </Typography>
+      <TextField
+        fullWidth
+        variant="outlined"
+        label="Type an address"
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
           fetchSuggestions(e.target.value);
         }}
-        placeholder="Type an address"
       />
       {suggestions.length > 0 && (
-        <ul className="suggestions">
-          {suggestions.map((address) => (
-            <li key={address.place_id} onClick={() => handleSelect(address)}>
-              {address.display_name}
-            </li>
-          ))}
-        </ul>
+        <Paper elevation={3}>
+          <SuggestionsList>
+            {suggestions.map((address) => (
+              <ListItemButton
+                key={address.place_id}
+                onClick={() => handleSelect(address)}
+              >
+                <ListItemText primary={address.display_name} />
+              </ListItemButton>
+            ))}
+          </SuggestionsList>
+        </Paper>
       )}
       {selectedAddress && (
-        <div>
-          <h2>Selected Address</h2>
-          <p>{selectedAddress}</p>
-        </div>
+        <Box mt={2}>
+          <Typography variant="h6">Selected Address</Typography>
+          <Typography>{selectedAddress}</Typography>
+        </Box>
       )}
       {coordinates && (
-        <div>
-          <h2>Coordinates</h2>
-          <p>Latitude: {coordinates.lat}</p>
-          <p>Longitude: {coordinates.lon}</p>
-        </div>
+        <Box mt={2}>
+          <Typography variant="h6">Coordinates</Typography>
+          <Typography>Latitude: {coordinates.lat}</Typography>
+          <Typography>Longitude: {coordinates.lon}</Typography>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

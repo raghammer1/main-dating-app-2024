@@ -32,6 +32,8 @@ const AboutUser = () => {
 
   const { getCurrentUser, setCurrentUser } = useUserStore();
 
+  const [coordinates, setCoordinates] = useState(null);
+
   const handleUserCreation = (res) => {
     setCurrentUser(res.data);
 
@@ -60,6 +62,7 @@ const AboutUser = () => {
       images,
       phoneNumber: '0400900001',
       sexOrientation: 'Straight',
+      coordinates: coordinates,
     };
 
     console.log(data);
@@ -152,7 +155,10 @@ const AboutUser = () => {
       </div>
       <div className="App">
         <header className="App-header">
-          <LocationCatcher />
+          <LocationCatcher
+            coordinates={coordinates}
+            setCoordinates={setCoordinates}
+          />
         </header>
       </div>
       <>

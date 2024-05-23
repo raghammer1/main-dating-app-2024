@@ -15,6 +15,7 @@ const registerSchema = joi.object({
   sexOrientation: joi.string().required(),
   images: joi.array().items(joi.string()).required(),
   phoneNumber: joi.string().required(),
+  coordinates: joi.required(),
 });
 
 const loginSchema = joi.object({

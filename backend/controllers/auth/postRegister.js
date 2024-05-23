@@ -16,6 +16,7 @@ const postRegister = async (req, res) => {
       sexOrientation,
       images,
       phoneNumber,
+      coordinates,
     } = req.body;
 
     // check if user exists
@@ -47,6 +48,10 @@ const postRegister = async (req, res) => {
       sexOrientation,
       images,
       phoneNumber,
+      location: {
+        type: 'Point',
+        coordinates: [coordinates.lat, coordinates.lon],
+      },
     });
 
     //! create the jwt token so that user can be logged in and when token expires user is logged out
@@ -71,6 +76,7 @@ const postRegister = async (req, res) => {
       sexOrientation: user.sexOrientation,
       images: user.images,
       phoneNumber: user.phoneNumber,
+      location: user.location,
     });
   } catch (err) {
     return res.status(500).send('unknown error occurred please try again');
