@@ -14,9 +14,11 @@ const getProfiles = async (req, res) => {
 
   const { coordinates } = currentUser.location;
 
+  const seenProfiles = currentUser.seenProfiles || [];
+
   // Find users near the current user
   const profiles = await User.find({
-    _id: { $ne: userId },
+    _id: { $ne: userId, $nin: seenProfiles },
     location: {
       $near: {
         $geometry: {
@@ -26,7 +28,13 @@ const getProfiles = async (req, res) => {
         $maxDistance: 1000000, // optional, in meters
       },
     },
-  });
+  }).limit(5);
+
+  currentUser.seenProfiles = [
+    ...currentUser.seenProfiles,
+    ...profiles.map((profile) => profile._id),
+  ];
+  await currentUser.save();
 
   return res.status(201).json({ profiles });
 };

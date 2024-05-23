@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
     type: { type: String, enum: ['Point'], required: true },
     coordinates: { type: [Number], required: true },
   },
+  seenProfiles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
 userSchema.index({ location: '2dsphere' });
