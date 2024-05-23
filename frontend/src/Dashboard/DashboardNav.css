@@ -1,0 +1,23 @@
+/* Navbar.css */
+
+.navButton {
+  flex: 1;
+  color: #fff;
+}
+
+.navButton:hover {
+  background-color: #ff5a5f;
+}
+
+.toolbar {
+  justify-content: space-between;
+}
+
+.appBar {
+  background-color: #ff6f61;
+}
+
+.logo {
+  flex-grow: 1;
+  cursor: pointer;
+}
