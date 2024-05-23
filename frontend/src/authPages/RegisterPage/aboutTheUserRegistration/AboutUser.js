@@ -60,7 +60,7 @@ const AboutUser = () => {
       genderInterest: userInterestGender,
       relationIntent: relationshipIntent,
       images,
-      phoneNumber: '0400980001',
+      phoneNumber: '0400980011',
       sexOrientation: 'Straight',
       coordinates: coordinates,
     };
