@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   images: [String],
   phoneNumber: { type: String },
   hobbies: [String],
-  // friends will be a array of user _id's
+  // friends will be a array of user _id's s
   friends: [String],
   likedByUsers: [String],
   location: {
