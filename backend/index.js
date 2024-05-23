@@ -12,6 +12,7 @@ const app = express();
 
 const authRoutes = require('./routes/authRoutes');
 const authSendOTP = require('./routes/authSendOTP');
+const profileFind = require('./routes/profileFind');
 
 app.use(bodyParser.json({ limit: '500mb' }));
 
@@ -24,6 +25,7 @@ app.route('/').get((req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/otp', authSendOTP);
+app.use('/find', profileFind);
 
 const server = http.createServer(app);
 

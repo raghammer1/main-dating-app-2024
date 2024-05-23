@@ -50,7 +50,7 @@ const postRegister = async (req, res) => {
       phoneNumber,
       location: {
         type: 'Point',
-        coordinates: [coordinates.lat, coordinates.lon],
+        coordinates: [coordinates.lon, coordinates.lat],
       },
     });
 

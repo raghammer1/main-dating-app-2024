@@ -22,3 +22,11 @@ export const register = async (data) => {
     return { error: true, e };
   }
 };
+
+export const findProfiles = async (data) => {
+  try {
+    return await apiClient.get(`/find/profiles?id=${data.id}`);
+  } catch (e) {
+    return { error: true, e };
+  }
+};

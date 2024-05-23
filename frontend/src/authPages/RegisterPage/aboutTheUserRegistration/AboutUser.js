@@ -59,8 +59,8 @@ const AboutUser = () => {
       gender: userGender,
       genderInterest: userInterestGender,
       relationIntent: relationshipIntent,
-      images,
-      phoneNumber: '0400900001',
+      images: [],
+      phoneNumber: '0400920001',
       sexOrientation: 'Straight',
       coordinates: coordinates,
     };

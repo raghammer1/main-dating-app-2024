@@ -6,14 +6,17 @@ import LoginPageFooter from './LoginPageFooter';
 import { validateLoginForm } from '../../shared/utils/validators';
 import { useAlert } from '../../shared/components/AlertNotification';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../services/api';
+import { findProfiles, login } from '../../services/api';
 import useUserStore from '../../zustand/useUserStore';
+import { useLoading } from '../../shared/components/useLoading';
 
 const LoginPage = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
   const { setCurrentUser } = useUserStore();
+
+  const { show, hide } = useLoading();
 
   useEffect(() => {
     setIsFormValid(validateLoginForm({ mail, password }));
@@ -23,13 +26,19 @@ const LoginPage = () => {
   const { showAlert } = useAlert();
   const handleLoginFunction = useCallback(async () => {
     try {
+      show();
       const response = await login({ mail, password });
       console.log(response, 'response');
       const token = response.data.token;
       localStorage.setItem('token', token);
 
-      setCurrentUser({ name: '', email: mail });
+      setCurrentUser(response.data);
       showAlert('Welcome back', 'green');
+
+      const profiles = await findProfiles({ id: response.data._id });
+      console.log('ALL PROFILES', profiles, 'ALL PROFILES');
+
+      hide();
 
       nav('/dashboard');
     } catch (error) {

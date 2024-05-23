@@ -28,10 +28,10 @@ const loginSchema = joi.object({
 // Checking the validator on route if the validator fails the post request will never be executed
 router
   .route('/register')
-  .post(validator.body(registerSchema), authController.controllers.postRegister)
-  .get((req, res) => {
-    res.send('register me');
-  });
+  .post(
+    validator.body(registerSchema),
+    authController.controllers.postRegister
+  );
 
 router.post(
   '/login',
