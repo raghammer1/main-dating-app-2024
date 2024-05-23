@@ -1,13 +1,13 @@
 {
-  "web": {
-    "client_id": "241354998155-gim6oumiq2uvbkm5bur4jjnh5lpsl6j5.apps.googleusercontent.com",
-    "project_id": "sound-machine-423108-f1",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_secret": "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",
-    "redirect_uris": [
-      "http://localhost:3000/"
-    ]
-  }
+  "type": "service_account",
+  "project_id": "sound-machine-423108-f1",
+  "private_key_id": "49595fb8b205e4d8c1cea17366c58de124983444",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDWWb09QC8b7RRh\nC5eHxh5EYnN0Om/E2+IJPRo5mXG369+CC0QlPpakbkp9xT6WP7ioJLpJoS9XUqwu\n1OVsCYqzIJgTUTOdgiAGkTYub+pecQGhJHFcqwCe5FsN92st3EFD4JMTfUMN9LWl\nD9PCeDM+ciBtXEC9wwfSqWrIomx8l/3eodgL6ksZnpiY/Zj+2urjkZUmD5/rTIYE\nFPFcsLsI5MIB4jD2nwB/7lcadZvgMiPpnKYxgXUYj1adjdqZW+PR4pY/r6+YBEcG\nRRl+5zuxZJA2Eahjhf1uQgf8m/etigZHWiLTsvtBqiue2mHMCDACzmbo7E/rJ0rg\nAJWNERwbAgMBAAECggEAB0CzFAL7dRTxBxWW03vDI2o3YNvnU0BjZg+gtwk3nVMI\nVYSfEimLfFXVBGtrojbWvy269enTyb8c31rJxn2OKWB1dNXfCrnP7pj0Pd8AjaCC\nPxsWEN4iX733TMIt6LfWp37OSy8GWU8J5GNkNWTOyxKegUTJVgJm3dxophBE3nRQ\nM3awxS/qnFX/j4Mj5Rnl8P8ixu2/r6O5VBS3zp9sQkejVqj5h5fSuku7VZvDWaTO\n66rq17mqySbLil1BppVemYjfUqxWrdFz5NiOwhF+VQ9yOBQbAWzrXvqkBqoQXsv5\nUojCqIDBjBmTDJqOvpitctm55KSjyoGbsk2PoIuYmQKBgQD/rD5RHsRceon6vLFo\nIjeyK4wooxKAh2jMQkJbUrtBeQ2PGwbIkSHvbCjo0+yE3oiYhmV2GT05ZZJPf21K\nn8FgEo+XVnYe+k0KcmitVk/K1RvkuJQxFB0OKhlvJ2s6Fo0LL3AFMNIYB51fDw5N\nm1mi4h7Osn5+ofLtWbKLhBxGAwKBgQDWn/V7DLNvBnMBUMI+km4cnrrQiZ+2z0Ob\nTVU5s3a6w9xSjp7kfgmkXylkMUhFqDtJadCOSB4TxqmYrQOkQQ/X+czsJVptGTog\njDCDLORH/JOPx8ym3r5yBRD8437HEoheB3Q5UA5sy+avVV6YtCAWKHVTBKsRoT5F\nLQkvI2ziCQKBgQDPrCfeGmCjQYGsIfL0Q777wPWS2Iqhzdto9nUR2sxxbRN/ZxOG\nfKSU5kUAgYs/jcZkJd5qJCwf4AoM+tNaZxNapxjtc3R0yxki4DV4foBHn/yNNwRg\nLRdAtx97swgc4c5lBH44KSSuEhlY6lDS5tnTPVqKyF+JGqDI/C/TtVaF4wKBgQDR\n/oKWme+6sum1oMndpTI9qIUK4400tgjlHD5GDbUeueKJmGgZEsTmYgHCuYGIPjl7\n9B+OBzv+h4OLEcWdYddZr110tHuMgYFhNSmGP1dAo/3RUWGI6CoYr6JWfVSe/SAW\nOF7ccNscUkjsxq+e46b9ZyqcRtYGkui1kIIK8DNp2QKBgQD2sGR0Gk/RB9jgz9ta\nS4KfWMzzAycg535n19msiY83fnpnfluKEDhgxSS7iNokQZirtahLaQO2MLmShRve\n8d+/ZnxYgolRUwa9CAY9aqBupIrtO7uIjmJRbTatiA2dH01ES1skSEm3ISlMjImp\ndxSlHwqJeBj2s794hLr1AsCxqA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dating-app@sound-machine-423108-f1.iam.gserviceaccount.com",
+  "client_id": "112272955784956057684",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dating-app%40sound-machine-423108-f1.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
 }

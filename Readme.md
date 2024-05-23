@@ -30,6 +30,7 @@ NOTE: REMEMBER TO KEEP ALL 'CODE IN BRANCHES' AND 'NOT' TO APPROVE YOUR OWN MERG
 
 1. Auth token will be returned
 2. Remember that if you delete the users db from the mongodb then there is a possibility that it wont be able to find users by location you will need to go the new collection of users, go to index's option in the mongoDB then add the : `"<location>:<2dsphere>"`
+3. To get the real json file for google drive setup you need to create a project then create a credential OAuth then create a service account then in the service account create a key from the keys option then the key needs to be json then that is the json that becomes your mainDrive.json file.
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
