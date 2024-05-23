@@ -1,6 +1,7 @@
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const uploadBase64Image = require('../../fileUploader/uploadFile');
 
 const postRegister = async (req, res) => {
   // res.send('register route');
@@ -33,6 +34,12 @@ const postRegister = async (req, res) => {
       return res.status(409).send('Phone Number already in use already in use');
     }
 
+    const imagesGoogleDoc = await Promise.all(
+      images.map((image, index) =>
+        uploadBase64Image(image, `${username}-image-${index}`)
+      )
+    );
+
     // encrypt password
     const encryptedPassword = password;
 
@@ -46,7 +53,7 @@ const postRegister = async (req, res) => {
       genderInterest,
       relationIntent,
       sexOrientation,
-      images,
+      images: imagesGoogleDoc,
       phoneNumber,
       location: {
         type: 'Point',
@@ -79,7 +86,9 @@ const postRegister = async (req, res) => {
       location: user.location,
     });
   } catch (err) {
-    return res.status(500).send('unknown error occurred please try again');
+    return res
+      .status(500)
+      .send(`unknown error occurred please try again ${err}`);
   }
 };
 
