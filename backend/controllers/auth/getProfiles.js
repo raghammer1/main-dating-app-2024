@@ -28,7 +28,11 @@ const getProfiles = async (req, res) => {
         $maxDistance: 1000000, // optional, in meters
       },
     },
-  }).limit(5);
+  })
+    .limit(5)
+    .select(
+      'username mail images dob gender genderInterest relationIntent sexOrientation location hobbies'
+    );
 
   currentUser.seenProfiles = [
     ...currentUser.seenProfiles,
