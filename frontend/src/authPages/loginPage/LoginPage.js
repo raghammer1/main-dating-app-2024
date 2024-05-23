@@ -9,12 +9,14 @@ import { useNavigate } from 'react-router-dom';
 import { findProfiles, login } from '../../services/api';
 import useUserStore from '../../zustand/useUserStore';
 import { useLoading } from '../../shared/components/useLoading';
+import useCurrentDisplayProfiles from '../../zustand/useCurrentDisplayProfiles';
 
 const LoginPage = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(true);
   const { setCurrentUser } = useUserStore();
+  const { setProfiles } = useCurrentDisplayProfiles();
 
   const { show, hide } = useLoading();
 
@@ -36,6 +38,7 @@ const LoginPage = () => {
       showAlert('Welcome back', 'green');
 
       const profiles = await findProfiles({ id: response.data._id });
+      setProfiles(profiles.data.profiles);
       console.log('ALL PROFILES', profiles, 'ALL PROFILES');
 
       hide();

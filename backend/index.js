@@ -27,6 +27,20 @@ app.use('/auth', authRoutes);
 app.use('/otp', authSendOTP);
 app.use('/find', profileFind);
 
+app.get('/proxy', (req, res) => {
+  const url = req.query.url;
+  if (!url) {
+    return res.status(400).send('URL is required');
+  }
+
+  request
+    .get(url)
+    .on('error', (err) => {
+      res.status(500).send(err.message);
+    })
+    .pipe(res);
+});
+
 const server = http.createServer(app);
 
 mongoose

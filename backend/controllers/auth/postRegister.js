@@ -34,10 +34,19 @@ const postRegister = async (req, res) => {
       return res.status(409).send('Phone Number already in use already in use');
     }
 
+    // const imagesGoogleDoc = await Promise.all(
+    //   images.map((image, index) =>
+    //     uploadBase64Image(image, `${username}-image-${index}`)
+    //   )
+    // );
     const imagesGoogleDoc = await Promise.all(
-      images.map((image, index) =>
-        uploadBase64Image(image, `${username}-image-${index}`)
-      )
+      images.map(async (image, index) => {
+        const originalUrl = await uploadBase64Image(
+          image,
+          `${username}-image-${index}`
+        );
+        return originalUrl.replace('uc?id=', 'thumbnail?id=');
+      })
     );
 
     // encrypt password
