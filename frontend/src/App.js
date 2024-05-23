@@ -22,7 +22,10 @@ const App = () => {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/userInfo/:username" element={<AboutUser />} />
-              <Route path="/dashboard" element={<DashboardMain />} />
+              <Route path="/dashboard/*" element={<DashboardMain />} />
+              {/* <Route path="/dashboard/likes" element={<DashboardMain />} />
+              <Route path="/dashboard/chat" element={<DashboardMain />} />
+              <Route path="/dashboard/profile" element={<DashboardMain />} /> */}
             </Routes>
           </BrowserRouter>
         </AlertProvider>

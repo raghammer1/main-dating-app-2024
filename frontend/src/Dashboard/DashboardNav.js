@@ -11,15 +11,15 @@ const DashboardNav = () => {
   };
 
   const handleGoToLikes = () => {
-    nav('/likes');
+    nav('/dashboard/likes');
   };
 
   const handleGoToChat = () => {
-    nav('/chat');
+    nav('/dashboard/chat');
   };
 
   const handleGoToProfile = () => {
-    nav('/profile');
+    nav('/dashboard/profile');
   };
 
   return (
