@@ -10,6 +10,7 @@ const PORT = process.env.PORT || process.env.API_PORT;
 
 const app = express();
 
+const socketServer = require('./socketServer');
 const authRoutes = require('./routes/authRoutes');
 const authSendOTP = require('./routes/authSendOTP');
 const profileFind = require('./routes/profileFind');
@@ -42,6 +43,7 @@ app.get('/proxy', (req, res) => {
 });
 
 const server = http.createServer(app);
+socketServer.registerSocketServer(server);
 
 mongoose
   .connect(process.env.MONGO_URI)
