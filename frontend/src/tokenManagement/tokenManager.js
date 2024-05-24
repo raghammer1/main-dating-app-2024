@@ -1,6 +1,6 @@
 import { logout } from '../shared/utils/auth';
 
-// Set the token with an expiry time
+// Set the token with an expiry time s
 export const setTokenWithExpiry = (token, expiryTimeInMinutes) => {
   const now = new Date();
   const item = {
