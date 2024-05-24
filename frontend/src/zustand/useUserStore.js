@@ -28,7 +28,7 @@ const useUserStore = create((set, get) => ({
 
   addFriendInvitations: (newInvitations) =>
     set((state) => ({
-      friendInvitations: [...state.friendInvitations, ...newInvitations],
+      friendInvitations: [...newInvitations],
     })),
   getPendingFriendInvites: () => {
     const friendInvitations = get().friendInvitations;

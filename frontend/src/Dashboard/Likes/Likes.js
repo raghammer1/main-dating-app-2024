@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useUserStore from '../../zustand/useUserStore';
 import { Box } from '@mui/material';
 import SenderCard from './SenderCard';
+import { useAlert } from '../../shared/components/AlertNotification';
 
 const Container = styled(Box)`
   display: flex;
@@ -21,6 +22,8 @@ const Likes = () => {
 
   const [pendingInvitations, setPendingInvitations] = useState([]);
 
+  const { showAlert } = useAlert();
+
   useEffect(() => {
     const fetchPendingInvitations = async () => {
       const invites = await getPendingFriendInvites();
@@ -33,6 +36,7 @@ const Likes = () => {
       // );
     };
     fetchPendingInvitations();
+    showAlert('New Like Received', 'green');
   }, [pendingFriendInvites]);
 
   const handleAccept = async (inviteId) => {
