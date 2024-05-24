@@ -29,11 +29,11 @@ export const connectWithSocketServer = (token) => {
   });
 
   // ! THESE ARE LISTNERS WHICH OPEN UP WHEN THE CONNECTION IS MADE
-  // socket.on('friends-invitation', (data) => {
-  //   const { pendingInvitations } = data;
-  //   console.log('friend invitation came: ', pendingInvitations);
-  //   store.dispatch(setPendingFriendsInvitation(pendingInvitations));
-  // });
+  socket.on('friends-invitation', (data) => {
+    const { pendingInvitations } = data;
+    console.log('friend invitation came: ', pendingInvitations);
+    // store.dispatch(setPendingFriendsInvitation(pendingInvitations));
+  });
 
   // socket.on('friends-list', (data) => {
   //   const { friends } = data;

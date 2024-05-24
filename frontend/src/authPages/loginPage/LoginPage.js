@@ -32,6 +32,7 @@ const LoginPage = () => {
       show();
       const response = await login({ mail, password });
       console.log(response, 'response');
+      // console.log('token', response);
       const token = response.data.token;
       // localStorage.setItem('token', token);
       setTokenWithExpiry(token, 60);

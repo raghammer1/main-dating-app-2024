@@ -14,6 +14,7 @@ const socketServer = require('./socketServer');
 const authRoutes = require('./routes/authRoutes');
 const authSendOTP = require('./routes/authSendOTP');
 const profileFind = require('./routes/profileFind');
+const friendInvitationRoutes = require('./routes/friendInvitationRoutes');
 
 app.use(bodyParser.json({ limit: '500mb' }));
 
@@ -27,6 +28,7 @@ app.route('/').get((req, res) => {
 app.use('/auth', authRoutes);
 app.use('/otp', authSendOTP);
 app.use('/find', profileFind);
+app.use('/friend-invitation', friendInvitationRoutes);
 
 app.get('/proxy', (req, res) => {
   const url = req.query.url;
