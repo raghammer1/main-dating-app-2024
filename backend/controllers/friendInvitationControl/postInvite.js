@@ -5,6 +5,15 @@ const friendsUpdate = require('../../socketHandlers/updates/friends');
 const postInvite = async (req, res) => {
   const { receiverId, senderId } = req.body;
 
+  // Check if invite has been already sent
+  const invitationAlreadySent = await FriendInvitation.findOne({
+    senderId: senderId,
+    receiverId: receiverId,
+  });
+  if (invitationAlreadySent) {
+    return res.status(409).send('Invitation already sent');
+  }
+
   // Now we can create a new invitation for a friend add
   await FriendInvitation.create({
     senderId: senderId,
