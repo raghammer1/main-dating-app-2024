@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
   Button,
   Card,
-  CardContent,
   CardMedia,
   Typography,
   Box,
