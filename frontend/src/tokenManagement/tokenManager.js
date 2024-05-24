@@ -1,3 +1,5 @@
+import { logout } from '../shared/utils/auth';
+
 // Set the token with an expiry time
 export const setTokenWithExpiry = (token, expiryTimeInMinutes) => {
   const now = new Date();
@@ -22,6 +24,7 @@ export const getToken = () => {
   if (now.getTime() > item.expiry) {
     // Token has expired, remove it from localStorage
     localStorage.removeItem('token');
+    logout();
     return null;
   }
   return item.value;
