@@ -6,7 +6,7 @@ const updateFriendsPendingInvitations = async (userId) => {
   try {
     const pendingInvitations = await FriendInvitation.find({
       receiverId: userId,
-    }).populate('senderId', '_id username mail');
+    }).populate('senderId', '_id username mail images hobbies');
 
     // find if user of specified id has active connections
     const receiverList = serverStore.getOnlineUsers(userId);

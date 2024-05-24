@@ -1,4 +1,5 @@
 import io from 'socket.io-client';
+import useUserStore from '../zustand/useUserStore';
 // import {
 //   setPendingFriendsInvitation,
 //   setFriends,
@@ -8,6 +9,8 @@ import io from 'socket.io-client';
 // import { updateDirectChatHistoryIfActive } from '../shared/utils/chat';
 
 let socket = null;
+
+const addInvitations = useUserStore.getState().addFriendInvitations;
 
 export const connectWithSocketServer = (token) => {
   const jwtToken = token;
@@ -32,6 +35,7 @@ export const connectWithSocketServer = (token) => {
   socket.on('friends-invitation', (data) => {
     const { pendingInvitations } = data;
     console.log('friend invitation came: ', pendingInvitations);
+    addInvitations(pendingInvitations);
     // store.dispatch(setPendingFriendsInvitation(pendingInvitations));
   });
 

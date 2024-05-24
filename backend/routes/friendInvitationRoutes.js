@@ -18,11 +18,22 @@ const inviteDecisionSchema = joi.object({
 // BY THE SCHEMA IF IT IS THEN IT WILL BE PROCESSED IN OUT CONTROLLER
 // WHICH IS THE POSTINVITE IN THE FRIENDSINVITATIONCONTROLLERS FILE
 // AUTH IS A MIDDLEWARE TO VERIFY THAT THE USER HAS A VALID JWT TOKEN
-router.post(
-  '/invite',
-  auth,
-  validator.body(inviteDecisionSchema),
-  friendInvitationControllers.controllers.postInvite
-);
+router
+  .post(
+    '/invite',
+    auth,
+    validator.body(inviteDecisionSchema),
+    friendInvitationControllers.controllers.postInvite
+  )
+  .get(
+    '/invite',
+    auth,
+    validator.query(
+      joi.object({
+        id: joi.string().required(),
+      })
+    ),
+    friendInvitationControllers.controllers.getInvites
+  );
 
 module.exports = router;

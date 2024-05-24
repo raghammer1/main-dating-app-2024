@@ -30,3 +30,11 @@ export const findProfiles = async (data) => {
     return { error: true, e };
   }
 };
+
+export const getPendingFriendInvitesAPI = async (data) => {
+  try {
+    return await apiClient.get(`/friend-invitation/invite?id=${data.id}`);
+  } catch (e) {
+    return { error: true, e };
+  }
+};
