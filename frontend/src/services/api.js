@@ -31,6 +31,14 @@ export const findProfiles = async (data) => {
   }
 };
 
+export const sendInvitationRequestAPI = async (data) => {
+  try {
+    return await apiClient.post(`/friend-invitation/invite`, data);
+  } catch (e) {
+    return { error: true, e };
+  }
+};
+
 export const getPendingFriendInvitesAPI = async (data) => {
   try {
     return await apiClient.get(`/friend-invitation/invite?id=${data.id}`);

@@ -12,12 +12,15 @@ import {
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import useCurrentDisplayProfiles from '../zustand/useCurrentDisplayProfiles';
 import './Dashboard.css'; // For handling the color changes
+import { sendInvitationRequestAPI } from '../services/api';
+import useUserStore from '../zustand/useUserStore';
 
 const Dashboard = () => {
   const { displayProfiles, popTopProfile } = useCurrentDisplayProfiles();
   const [currentProfile, setCurrentProfile] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState('');
+  const { getCurrentUser } = useUserStore();
 
   useEffect(() => {
     if (displayProfiles.length > 0) {
@@ -29,9 +32,15 @@ const Dashboard = () => {
     console.log('Current profile', displayProfiles);
   }, [displayProfiles]);
 
-  const handleDecision = (decision) => {
+  const handleDecision = async (decision) => {
     if (decision === 'tick') {
       setBackgroundColor('green');
+
+      const user = await getCurrentUser();
+      sendInvitationRequestAPI({
+        senderId: user._id,
+        receiverId: currentProfile._id,
+      });
     } else {
       setBackgroundColor('red');
     }
