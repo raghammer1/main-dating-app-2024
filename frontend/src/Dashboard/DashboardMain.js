@@ -7,18 +7,25 @@ import Chat from './Chat/Chat';
 import { useEffect, useState } from 'react';
 import { logout } from '../shared/utils/auth';
 import { connectWithSocketServer } from '../realtimeCommunication/SocketConnection';
+import { getToken } from '../tokenManagement/tokenManager';
 
 const DashboardMain = () => {
   // const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    // const storedToken = localStorage.getItem('token');
+    const storedToken = getToken();
     if (storedToken) {
       // const parsedToken = JSON.parse(storedToken);
       // setToken(parsedToken);
-      connectWithSocketServer(storedToken);
-      console.log('YAYA');
+      try {
+        connectWithSocketServer(storedToken);
+        console.log('YAYA');
+      } catch (e) {
+        logout();
+      }
     } else {
+      logout();
       console.log('HMM');
     }
 

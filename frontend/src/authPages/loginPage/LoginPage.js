@@ -10,6 +10,7 @@ import { findProfiles, login } from '../../services/api';
 import useUserStore from '../../zustand/useUserStore';
 import { useLoading } from '../../shared/components/useLoading';
 import useCurrentDisplayProfiles from '../../zustand/useCurrentDisplayProfiles';
+import { setTokenWithExpiry } from '../../tokenManagement/tokenManager';
 
 const LoginPage = () => {
   const [mail, setMail] = useState('');
@@ -32,7 +33,8 @@ const LoginPage = () => {
       const response = await login({ mail, password });
       console.log(response, 'response');
       const token = response.data.token;
-      localStorage.setItem('token', token);
+      // localStorage.setItem('token', token);
+      setTokenWithExpiry(token, 60);
 
       setCurrentUser(response.data);
       showAlert('Welcome back', 'green');
