@@ -4,7 +4,10 @@ const getInvites = async (req, res) => {
   const { id } = req.query;
   const pendingInvites = await FriendInvitation.find({
     receiverId: id,
-  }).populate('senderId', '_id username mail images hobbies');
+  }).populate(
+    'senderId',
+    '_id username mail images hobbies dob sexOrientation'
+  );
   return res.status(201).json(pendingInvites);
 };
 
