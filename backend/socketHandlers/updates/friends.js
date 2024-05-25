@@ -76,6 +76,8 @@ const updateOnlineFriends = async (userId) => {
       return;
     }
 
+    console.log('ONLINE USERS:', receiverList);
+
     // Basically for each friend in the friends list we are only wanting the mail, username and _id and hence using populate
     const user = await User.findById(userId, { _id: 1, friends: 1 }).populate(
       'friends',
