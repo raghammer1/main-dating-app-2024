@@ -9,7 +9,7 @@ import DashboardMain from './Dashboard/DashboardMain';
 
 /**
  * Main application component that sets up routing and global providers.
- * Hdgfngdfhjtandles the routing for login, registration, dashboard, and presentation management.
+ * Handles the routing for login, registration, dashboard, and presentation management.
  */
 const App = () => {
   return (
@@ -23,9 +23,6 @@ const App = () => {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/userInfo/:username" element={<AboutUser />} />
               <Route path="/dashboard/*" element={<DashboardMain />} />
-              {/* <Route path="/dashboard/likes" element={<DashboardMain />} />
-              <Route path="/dashboard/chat" element={<DashboardMain />} />
-              <Route path="/dashboard/profile" element={<DashboardMain />} /> */}
             </Routes>
           </BrowserRouter>
         </AlertProvider>

@@ -30,3 +30,35 @@ export const findProfiles = async (data) => {
     return { error: true, e };
   }
 };
+
+export const sendInvitationRequestAPI = async (data) => {
+  try {
+    return await apiClient.post(`/friend-invitation/invite`, data);
+  } catch (e) {
+    return { error: true, e };
+  }
+};
+
+export const getPendingFriendInvitesAPI = async (data) => {
+  try {
+    return await apiClient.get(`/friend-invitation/invite?id=${data.id}`);
+  } catch (e) {
+    return { error: true, e };
+  }
+};
+
+export const rejectFriendInvitationAPI = async (data) => {
+  try {
+    return await apiClient.post(`/friend-invitation/reject`, data);
+  } catch (e) {
+    return { error: true, e };
+  }
+};
+
+export const acceptFriendInvitationAPI = async (data) => {
+  try {
+    return await apiClient.post(`/friend-invitation/accept`, data);
+  } catch (e) {
+    return { error: true, e };
+  }
+};

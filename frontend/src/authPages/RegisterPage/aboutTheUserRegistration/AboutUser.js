@@ -10,6 +10,7 @@ import { register } from '../../../services/api';
 import useUserStore from '../../../zustand/useUserStore';
 import { useNavigate } from 'react-router-dom';
 import LocationCatcher from './LocationCatcher';
+import { setTokenWithExpiry } from '../../../tokenManagement/tokenManager';
 
 const AboutUser = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -39,7 +40,8 @@ const AboutUser = () => {
 
     console.log('THIS IS RES', res);
 
-    localStorage.setItem('token', res.data.token);
+    // localStorage.setItem('token', res.data.token);
+    setTokenWithExpiry(res.data.token, 60);
 
     nav('/dashboard');
   };

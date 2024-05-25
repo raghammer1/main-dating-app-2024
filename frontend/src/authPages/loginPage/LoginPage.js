@@ -6,10 +6,15 @@ import LoginPageFooter from './LoginPageFooter';
 import { validateLoginForm } from '../../shared/utils/validators';
 import { useAlert } from '../../shared/components/AlertNotification';
 import { useNavigate } from 'react-router-dom';
-import { findProfiles, login } from '../../services/api';
+import {
+  findProfiles,
+  getPendingFriendInvitesAPI,
+  login,
+} from '../../services/api';
 import useUserStore from '../../zustand/useUserStore';
 import { useLoading } from '../../shared/components/useLoading';
 import useCurrentDisplayProfiles from '../../zustand/useCurrentDisplayProfiles';
+import { setTokenWithExpiry } from '../../tokenManagement/tokenManager';
 
 const LoginPage = () => {
   const [mail, setMail] = useState('');
@@ -19,6 +24,11 @@ const LoginPage = () => {
   const { setProfiles } = useCurrentDisplayProfiles();
 
   const { show, hide } = useLoading();
+
+  const { getCurrentUser } = useUserStore();
+  const addFriendInvitations = useUserStore(
+    (state) => state.addFriendInvitations
+  );
 
   useEffect(() => {
     setIsFormValid(validateLoginForm({ mail, password }));
@@ -31,15 +41,29 @@ const LoginPage = () => {
       show();
       const response = await login({ mail, password });
       console.log(response, 'response');
+      // console.log('token', response);
       const token = response.data.token;
-      localStorage.setItem('token', token);
+      // localStorage.setItem('token', token);
+      setTokenWithExpiry(token, 60);
 
       setCurrentUser(response.data);
+
+      localStorage.setItem('userId', response.data._id);
+
       showAlert('Welcome back', 'green');
 
       const profiles = await findProfiles({ id: response.data._id });
       setProfiles(profiles.data.profiles);
       console.log('ALL PROFILES', profiles, 'ALL PROFILES');
+
+      const user = await getCurrentUser();
+      console.log(user);
+
+      const userId = localStorage.getItem('userId');
+
+      const invites = await getPendingFriendInvitesAPI({ id: userId });
+      console.log('THESE ARE THE INITIAL', invites);
+      addFriendInvitations(invites.data);
 
       hide();
 

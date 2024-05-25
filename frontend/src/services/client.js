@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from '../tokenManagement/tokenManager';
 
 // Creates an Axios instance configured with base settings.
 const apiClient = axios.create({
@@ -9,7 +10,8 @@ const apiClient = axios.create({
 // Adds a request interceptor to include a bearer token in each request's headers.
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
+    const token = getToken();
     if (token) {
       try {
         config.headers.Authorization = `Bearer ${token}`;
