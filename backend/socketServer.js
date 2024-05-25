@@ -2,9 +2,9 @@ const authSocket = require('./middleware/authSocket');
 const newConnectionHandler = require('./socketHandlers/newConnectionHandler');
 const disconnectHandler = require('./socketHandlers/disconnectSocket');
 const serverStore = require('./serverStore');
-// const { updateOnlineFriends } = require('./socketHandlers/updates/friends');
-// const directMessageHandler = require('./socketHandlers/directMessageHandler');
-// const directChatHistoryHandler = require('./socketHandlers/directChatHistoryHandler');
+const { updateOnlineFriends } = require('./socketHandlers/updates/friends.js');
+const directMessageHandler = require('./socketHandlers/directMessageHandler.js');
+const directChatHistoryHandler = require('./socketHandlers/directChatHistoryHandler.js');
 
 const registerSocketServer = (server) => {
   const io = require('socket.io')(server, {
@@ -30,13 +30,13 @@ const registerSocketServer = (server) => {
       disconnectHandler(socket);
     });
 
-    // socket.on('direct-message', (data) => {
-    //   directMessageHandler(socket, data);
-    // });
+    socket.on('direct-message', (data) => {
+      directMessageHandler(socket, data);
+    });
 
-    // socket.on('direct-chat-history', (data) => {
-    //   directChatHistoryHandler(socket, data);
-    // });
+    socket.on('direct-chat-history', (data) => {
+      directChatHistoryHandler(socket, data);
+    });
   });
 };
 

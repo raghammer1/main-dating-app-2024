@@ -1,12 +1,6 @@
 import io from 'socket.io-client';
 import useUserStore from '../zustand/useUserStore';
-// import {
-//   setPendingFriendsInvitation,
-//   setFriends,
-//   setOnlineUsers,
-// } from '../store/actions/friendsActions';
-// import store from '../store/store';
-// import { updateDirectChatHistoryIfActive } from '../shared/utils/chat';
+import { updateDirectChatHistoryIfActive } from '../shared/utils/chat';
 
 let socket = null;
 
@@ -54,10 +48,10 @@ export const connectWithSocketServer = (token) => {
   });
 
   // // socket.on('direct-message', () => {});
-  // socket.on('direct-chat-history', (data) => {
-  //   console.log('DIRECT CHAT HISTORY CAME FROM THE SERVER', data);
-  //   updateDirectChatHistoryIfActive(data);
-  // });
+  socket.on('direct-chat-history', (data) => {
+    console.log('DIRECT CHAT HISTORY CAME FROM THE SERVER', data);
+    updateDirectChatHistoryIfActive(data);
+  });
 };
 
 export const disconnectFromSocketServer = () => {
@@ -67,11 +61,11 @@ export const disconnectFromSocketServer = () => {
 };
 
 // !THESE ARE GETTERS
-// export const sendDirectMessage = (data) => {
-//   socket.emit('direct-message', data);
-// };
+export const sendDirectMessage = (data) => {
+  socket.emit('direct-message', data);
+};
 
-// export const getDirectChatHistory = (data) => {
-//   // console.log('HERE2', socket);
-//   socket.emit('direct-chat-history', data);
-// };
+export const getDirectChatHistory = (data) => {
+  // console.log('HERE2', socket);
+  socket.emit('direct-chat-history', data);
+};
