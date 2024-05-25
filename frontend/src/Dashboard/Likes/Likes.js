@@ -4,6 +4,7 @@ import useUserStore from '../../zustand/useUserStore';
 import { Box } from '@mui/material';
 import SenderCard from './SenderCard';
 import { useAlert } from '../../shared/components/AlertNotification';
+import { rejectFriendInvitationAPI } from '../../services/api';
 
 const Container = styled(Box)`
   display: flex;
@@ -23,6 +24,8 @@ const Likes = () => {
   const [pendingInvitations, setPendingInvitations] = useState([]);
 
   const { showAlert } = useAlert();
+
+  const { getCurrentUser } = useUserStore();
 
   useEffect(() => {
     const fetchPendingInvitations = async () => {
@@ -45,6 +48,8 @@ const Likes = () => {
 
   const handleReject = async (inviteId) => {
     // Handle reject invite
+    const user = await getCurrentUser();
+    rejectFriendInvitationAPI({ inviteId, userId: user._id });
   };
 
   return (

@@ -46,3 +46,11 @@ export const getPendingFriendInvitesAPI = async (data) => {
     return { error: true, e };
   }
 };
+
+export const rejectFriendInvitationAPI = async (data) => {
+  try {
+    return await apiClient.post(`/friend-invitation/reject`, data);
+  } catch (e) {
+    return { error: true, e };
+  }
+};
