@@ -1,7 +1,7 @@
 const FriendChatBox = ({ selectedFriend }) => {
   return (
     <div>
-      {selectedFriend.username} - {selectedFriend.mail}
+      {selectedFriend?.username} - {selectedFriend?.mail}
     </div>
   );
 };
