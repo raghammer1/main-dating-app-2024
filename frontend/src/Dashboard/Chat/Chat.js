@@ -46,7 +46,7 @@ const Chat = () => {
   const classes = useStyles();
   const [selectedFriend, setSelectedFriend] = useState(null);
 
-  // Access the friends list and online friends list from the store
+  // Access the friends list and online friends list from the stores
   const friendsList = useUserStore((state) => state.friendsList);
 
   return (
