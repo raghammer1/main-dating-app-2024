@@ -31,12 +31,6 @@ const Likes = () => {
     const fetchPendingInvitations = async () => {
       const invites = await getPendingFriendInvites();
       setPendingInvitations(invites);
-      // setCurrentImageIndex(
-      //   invites.reduce((acc, invite) => {
-      //     acc[invite._id] = 0;
-      //     return acc;
-      //   }, {})
-      // );
     };
     fetchPendingInvitations();
     showAlert('New Like Received', 'green');
