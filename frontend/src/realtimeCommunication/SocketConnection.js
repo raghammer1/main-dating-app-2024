@@ -45,27 +45,13 @@ export const connectWithSocketServer = (token) => {
     const { friends } = data;
     console.log('friend became came: ', friends);
     addFriendsList(friends);
-    // store.dispatch(setFriends(friends));
   });
 
   socket.on('online-friends-list', (data) => {
     const { onlineUsers } = data;
     console.log('Online users: ', onlineUsers);
     addOnlineFriendsList(onlineUsers);
-    // store.dispatch(setOnlineUsers(onlineUsers));
   });
-
-  // socket.on('friends-list', (data) => {
-  //   const { friends } = data;
-  //   console.log('friend invitation came: ', friends);
-  //   store.dispatch(setFriends(friends));
-  // });
-
-  // socket.on('online-friends-list', (data) => {
-  //   const { onlineUsers } = data;
-  //   console.log('Online users: ', onlineUsers);
-  //   store.dispatch(setOnlineUsers(onlineUsers));
-  // });
 
   // // socket.on('direct-message', () => {});
   // socket.on('direct-chat-history', (data) => {

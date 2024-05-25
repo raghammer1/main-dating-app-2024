@@ -7,7 +7,7 @@ const postLogin = async (req, res) => {
     const { mail, password } = req.body;
     const user = await User.findOne({
       mail: mail.toLowerCase(),
-    });
+    }).populate('friends', 'username mail images _id');
 
     // keeping given password first and password from db second is extremely important
     if (user && (await bcrypt.compare(password, user.password))) {
@@ -33,6 +33,7 @@ const postLogin = async (req, res) => {
         sexOrientation: user.sexOrientation,
         images: user.images,
         phoneNumber: user.phoneNumber,
+        friends: user.friends,
       });
     }
     res.status(400).send('Invalid Credential');
