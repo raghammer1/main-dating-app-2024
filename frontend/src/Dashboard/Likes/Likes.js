@@ -50,6 +50,10 @@ const Likes = () => {
     rejectFriendInvitationAPI({ inviteId, userId: user._id });
   };
 
+  if (pendingInvitations.length <= 0) {
+    return <div>You are not liked by anyone 😂</div>;
+  }
+
   return (
     <Container>
       {pendingInvitations.map((invite) => (
