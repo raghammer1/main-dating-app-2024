@@ -54,3 +54,11 @@ export const rejectFriendInvitationAPI = async (data) => {
     return { error: true, e };
   }
 };
+
+export const acceptFriendInvitationAPI = async (data) => {
+  try {
+    return await apiClient.post(`/friend-invitation/accept`, data);
+  } catch (e) {
+    return { error: true, e };
+  }
+};

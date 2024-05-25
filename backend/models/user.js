@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   phoneNumber: { type: String },
   hobbies: [String],
   // friends will be a array of user _id's
-  friends: [String],
+  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   likedByUsers: [String],
   location: {
     type: { type: String, enum: ['Point'], required: true },

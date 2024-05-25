@@ -11,6 +11,8 @@ import useUserStore from '../zustand/useUserStore';
 let socket = null;
 
 const addInvitations = useUserStore.getState().addFriendInvitations;
+const addFriendsList = useUserStore.getState().addFriendsList;
+const addOnlineFriendsList = useUserStore.getState().addOnlineFriendsList;
 
 export const connectWithSocketServer = (token) => {
   const jwtToken = token;
@@ -37,6 +39,20 @@ export const connectWithSocketServer = (token) => {
     console.log('friend invitation came: ', pendingInvitations);
     addInvitations(pendingInvitations);
     // store.dispatch(setPendingFriendsInvitation(pendingInvitations));
+  });
+
+  socket.on('friends-list', (data) => {
+    const { friends } = data;
+    console.log('friend became came: ', friends);
+    addFriendsList(friends);
+    // store.dispatch(setFriends(friends));
+  });
+
+  socket.on('online-friends-list', (data) => {
+    const { onlineUsers } = data;
+    console.log('Online users: ', onlineUsers);
+    addOnlineFriendsList(onlineUsers);
+    // store.dispatch(setOnlineUsers(onlineUsers));
   });
 
   // socket.on('friends-list', (data) => {

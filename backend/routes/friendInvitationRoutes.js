@@ -48,4 +48,15 @@ router.post(
   friendInvitationControllers.controllers.postReject
 );
 
+const acceptInviteSchema = joi.object({
+  inviteId: joi.string().required(),
+});
+
+router.post(
+  '/accept',
+  auth,
+  validator.body(acceptInviteSchema),
+  friendInvitationControllers.controllers.postAccept
+);
+
 module.exports = router;
