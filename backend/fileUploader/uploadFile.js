@@ -85,7 +85,25 @@ async function uploadBase64Image(base64Image, fileName) {
   }
 }
 
-module.exports = uploadBase64Image;
+async function deleteFile(fileUrl) {
+  try {
+    // Extract file ID from the URL
+    const fileId = fileUrl.match(/id=([^&]+)/)[1];
+
+    // Delete the file
+    await drive.files.delete({
+      fileId: fileId,
+    });
+
+    console.log(`File with ID ${fileId} has been deleted.`);
+    return true;
+  } catch (error) {
+    console.error('Error deleting file:', error);
+    throw error;
+  }
+}
+
+module.exports = { uploadBase64Image, deleteFile };
 
 // const base64Image = '';
 
