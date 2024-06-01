@@ -1,31 +1,31 @@
-export const updateDirectChatHistoryIfActive = (data) => {
-  const { participants, messages } = data;
+// export const updateDirectChatHistoryIfActive = (data) => {
+//   const { participants, messages } = data;
 
-  // find id of user from token and the id from active convo
-  const receiverId = store.getState().chat.chosenChatDetails?.id;
-  const userId = store.getState().auth.userDetails._id;
+//   // find id of user from token and the id from active convo
+//   const receiverId = store.getState().chat.chosenChatDetails?.id;
+//   const userId = store.getState().auth.userDetails._id;
 
-  if (receiverId && userId) {
-    const usersInConversation = [receiverId, userId];
+//   if (receiverId && userId) {
+//     const usersInConversation = [receiverId, userId];
 
-    updateChatHistoryIfSameConversationActive({
-      participants,
-      usersInConversation,
-      messages,
-    });
-  }
-};
+//     updateChatHistoryIfSameConversationActive({
+//       participants,
+//       usersInConversation,
+//       messages,
+//     });
+//   }
+// };
 
-const updateChatHistoryIfSameConversationActive = ({
-  participants,
-  usersInConversation,
-  messages,
-}) => {
-  const result = participants.every(function (participantId) {
-    return usersInConversation.includes(participantId);
-  });
+// const updateChatHistoryIfSameConversationActive = ({
+//   participants,
+//   usersInConversation,
+//   messages,
+// }) => {
+//   const result = participants.every(function (participantId) {
+//     return usersInConversation.includes(participantId);
+//   });
 
-  if (result) {
-    store.dispatch(setMessages(messages));
-  }
-};
+//   if (result) {
+//     store.dispatch(setMessages(messages));
+//   }
+// };
